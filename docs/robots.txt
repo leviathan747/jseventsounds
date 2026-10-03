@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jseventsounds.com/sitemap.xml

@@ -18,19 +18,30 @@ Then open <http://localhost:8000>.
 
 ## GitHub Pages settings
 
-In the repository, go to **Settings → Pages** and set **Source** to
-"Deploy from a branch", branch `main`, folder `/docs`. The site is then
-served at `https://<github-user>.github.io/jseventsounds/`.
+The site publishes from branch `main`, folder `/docs`, at the custom domain
+<https://jseventsounds.com>. The domain is stored in `docs/CNAME`; don't
+delete that file.
 
-All paths in the site are relative, so it works both at that address and at
-a custom domain.
+## DNS (GoDaddy)
 
-## Adding a custom domain later
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
+| CNAME | `www` | `leviathan747.github.io` |
 
-1. At the domain registrar, add DNS records:
-    - For `www`: a `CNAME` record pointing to `<github-user>.github.io`.
-    - For the apex domain: `A` records to `185.199.108.153`, `185.199.109.153`,
-      `185.199.110.153`, and `185.199.111.153`.
-1. In **Settings → Pages → Custom domain**, enter the domain and save.
-   GitHub commits a `docs/CNAME` file for you.
-1. Once the certificate is issued, check **Enforce HTTPS**.
+After DNS resolves, check **Enforce HTTPS** in **Settings → Pages**.
+
+## SEO files
+
+- `docs/robots.txt` and `docs/sitemap.xml` point at the custom domain.
+  Update `<lastmod>` in the sitemap when the page content changes.
+- `docs/index.html` has canonical, Open Graph, and schema.org
+  `EntertainmentBusiness` data in its `<head>`. Keep the phone numbers,
+  email, and prices there in sync with the visible page.
